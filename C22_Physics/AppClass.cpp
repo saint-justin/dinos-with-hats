@@ -12,7 +12,16 @@ void Application::InitVariables(void)
 
 	m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Steve");
 	m_pEntityMngr->UsePhysicsSolver();
-	
+
+	std::vector<String> matNames;
+	MaterialManager* pMatManager = MaterialManager::GetInstance();
+
+	// Make all the other materials here following this structure
+	Material pMatRed("MatRed");
+	matNames.push_back("MatRed");
+	pMatRed.LoadDiffuse("21_BrightRed");
+	pMatManager->AddMaterial(pMatRed);
+
 	for (int i = 0; i < 100; i++)
 	{
 		srand((unsigned int)time(NULL));
