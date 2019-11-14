@@ -13,9 +13,11 @@ void Application::InitVariables(void)
 	m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Steve");
 	m_pEntityMngr->UsePhysicsSolver();
 	
-	for (int i = 0; i < 0; i++)
+	for (int i = 0; i < 100; i++)
 	{
-		m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
+		srand((unsigned int)time(NULL));
+		int RandomValue = rand() % 12;
+		m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Cube_" + std::to_string(i));
 		vector3 v3Position = vector3(glm::sphericalRand(12.0f));
 		v3Position.y = 0.0f;
 		matrix4 m4Position = glm::translate(v3Position);
@@ -62,7 +64,7 @@ void Application::Display(void)
 		m_pRoot->Display(m_uOctantID);
 
 	// draw a skybox
-	m_pMeshMngr->AddSkyboxToRenderList("UnikittyFaceSc.png");
+	m_pMeshMngr->AddSkyboxToRenderList("Skybox_02.png");
 
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();
