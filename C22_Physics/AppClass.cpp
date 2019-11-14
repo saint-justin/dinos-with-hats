@@ -16,8 +16,23 @@ void Application::InitVariables(void)
 	for (int i = 0; i < 100; i++)
 	{
 		srand((unsigned int)time(NULL));
-		int RandomValue = rand() % 12;
-		m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Cube_" + std::to_string(i));
+		int RandomValue = rand() % 4;
+
+		switch (RandomValue)
+		{
+		case 0: 
+			m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Cube_" + std::to_string(i));
+			break;
+		case 1:
+			m_pEntityMngr->AddEntity("Dinos\\BrachSafetyFBX.fbx", "Cube_" + std::to_string(i));
+			break;
+		case 2:
+			m_pEntityMngr->AddEntity("Dinos\\TRexParty.fbx", "Cube_" + std::to_string(i));
+			break;
+		default:
+			m_pEntityMngr->AddEntity("Dinos\\TrichCap.fbx", "Cube_" + std::to_string(i));
+			break;
+		}
 		vector3 v3Position = vector3(glm::sphericalRand(12.0f));
 		v3Position.y = 0.0f;
 		matrix4 m4Position = glm::translate(v3Position);
