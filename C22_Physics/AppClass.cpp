@@ -10,10 +10,10 @@ void Application::InitVariables(void)
 
 	m_pLightMngr->SetPosition(vector3(0.0f, 3.0f, 13.0f), 1); //set the position of first light (0 is reserved for ambient light)
 
-	m_pEntityMngr->AddEntity("Minecraft\\Steve.obj", "Steve");
+	m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Steve");
 	m_pEntityMngr->UsePhysicsSolver();
 	
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 0; i++)
 	{
 		m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
 		vector3 v3Position = vector3(glm::sphericalRand(12.0f));
@@ -26,7 +26,6 @@ void Application::InitVariables(void)
 		//m_pEntityMngr->SetMass(i+1);
 	}
 	m_uOctantLevels = 1;
-	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 	m_pEntityMngr->Update();
 }
 void Application::Update(void)
@@ -41,6 +40,7 @@ void Application::Update(void)
 	CameraRotation();
 
 	//Update Entity Manager
+	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 	m_pEntityMngr->Update();
 
 	//Set the model matrix for the main object
@@ -62,7 +62,7 @@ void Application::Display(void)
 		m_pRoot->Display(m_uOctantID);
 
 	// draw a skybox
-	m_pMeshMngr->AddSkyboxToRenderList();
+	m_pMeshMngr->AddSkyboxToRenderList("UnikittyFaceSc.png");
 
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();
