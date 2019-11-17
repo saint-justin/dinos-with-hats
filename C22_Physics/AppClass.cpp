@@ -10,14 +10,38 @@ void Application::InitVariables(void)
 
 	m_pLightMngr->SetPosition(vector3(0.0f, 3.0f, 13.0f), 1); //set the position of first light (0 is reserved for ambient light)
 
-	//m_pEntityMngr->AddEntity("Minecraft\\Steve.obj", "Steve");
+	m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Steve");
 	m_pEntityMngr->UsePhysicsSolver();
 
-	m_pEntityMngr->AddEntity("Test_Obj\\TRexParty.obj", "RaptorDuck");
-	
-	for (int i = 0; i < 0; i++)
+	std::vector<String> matNames;
+	MaterialManager* pMatManager = MaterialManager::GetInstance();
+
+	// Make all the other materials here following this structure
+	Material pMatRed("MatRed");
+	matNames.push_back("MatRed");
+	pMatRed.LoadDiffuse("21_BrightRed");
+	pMatManager->AddMaterial(pMatRed);
+
+	for (int i = 0; i < 100; i++)
 	{
-		m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
+		srand((unsigned int)time(NULL));
+		int RandomValue = rand() % 4;
+
+		switch (RandomValue)
+		{
+		case 0: 
+			m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Cube_" + std::to_string(i));
+			break;
+		case 1:
+			m_pEntityMngr->AddEntity("Dinos\\BrachSafetyFBX.fbx", "Cube_" + std::to_string(i));
+			break;
+		case 2:
+			m_pEntityMngr->AddEntity("Dinos\\TRexParty.fbx", "Cube_" + std::to_string(i));
+			break;
+		default:
+			m_pEntityMngr->AddEntity("Dinos\\TrichCap.fbx", "Cube_" + std::to_string(i));
+			break;
+		}
 		vector3 v3Position = vector3(glm::sphericalRand(12.0f));
 		v3Position.y = 0.0f;
 		matrix4 m4Position = glm::translate(v3Position);
@@ -28,7 +52,6 @@ void Application::InitVariables(void)
 		//m_pEntityMngr->SetMass(i+1);
 	}
 	m_uOctantLevels = 1;
-	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 	m_pEntityMngr->Update();
 }
 void Application::Update(void)
@@ -43,6 +66,7 @@ void Application::Update(void)
 	CameraRotation();
 
 	//Update Entity Manager
+	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 	m_pEntityMngr->Update();
 
 	//Set the model matrix for the main object
@@ -63,9 +87,8 @@ void Application::Display(void)
 	else
 		m_pRoot->Display(m_uOctantID);
 
-
 	// draw a skybox
-	m_pMeshMngr->AddSkyboxToRenderList();
+	m_pMeshMngr->AddSkyboxToRenderList("Skybox_02.png");
 
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();

@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/gearp/source/repos/309-05_vaughn/include/glm
+# Install script for directory: D:/Profiles/wxw7238/source/repos/dinos-with-hats/include/glm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/gearp/Source/Repos/309-05_vaughn/include/glm/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "d:/profiles/wxw7238/source/repos/dinos-with-hats/include/glm/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/gearp/source/repos/309-05_vaughn/include/glm/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Profiles/wxw7238/source/repos/dinos-with-hats/include/glm/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

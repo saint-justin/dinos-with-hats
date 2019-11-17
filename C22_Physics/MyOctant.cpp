@@ -448,4 +448,9 @@ void MyOctant::Init(void)
 
 	m_pRoot = nullptr;
 	m_pParent = nullptr;
+
+	for (uint i = 0; i < 8; i++)
+	{
+		m_pChild[i] = nullptr;
+	}
 }
