@@ -22,9 +22,10 @@ void Application::InitVariables(void)
 	pMatRed.LoadDiffuse("21_BrightRed");
 	pMatManager->AddMaterial(pMatRed);
 
+	//seed for RNG
+	srand((unsigned int)time(NULL));
 	for (int i = 0; i < 100; i++)
 	{
-		srand((unsigned int)time(NULL));
 		int RandomValue = rand() % 4;
 
 		switch (RandomValue)
@@ -42,13 +43,13 @@ void Application::InitVariables(void)
 			m_pEntityMngr->AddEntity("Dinos\\TrichCap.fbx", "Cube_" + std::to_string(i));
 			break;
 		}
-		vector3 v3Position = vector3(glm::sphericalRand(12.0f));
+		vector3 v3Position = vector3(glm::sphericalRand(50.0f));
 		v3Position.y = 0.0f;
 		matrix4 m4Position = glm::translate(v3Position);
 		m_pEntityMngr->SetModelMatrix(m4Position * glm::scale(vector3(2.0f)));
 		m_pEntityMngr->UsePhysicsSolver();
-		//m_pEntityMngr->SetMass(2);
-
+		m_pEntityMngr->SetMass(2);
+		//m_pEntityMngr->ApplyForce(vector3(0.0f, 10.0f, 0.0f));
 		//m_pEntityMngr->SetMass(i+1);
 	}
 	m_uOctantLevels = 1;
