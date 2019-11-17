@@ -13,14 +13,19 @@ void Application::InitVariables(void)
 	m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Steve");
 	m_pEntityMngr->UsePhysicsSolver();
 
-	std::vector<String> matNames;
+	//std::vector<String> matNames;
 	MaterialManager* pMatManager = MaterialManager::GetInstance();
+	std::vector<String> diffuseNames = {"21_BrightRed.png", "23_BrightBlue.png", "24_BrightYellow.png", "37_BrightGreen.png", 
+		"42_TransparentLightBlue.png", "151_SandGreen.png", "154_DarkRed.png", "212_LightRoyalBlue.png", "221_BrightPurple.png",
+		"222_mLightPurple.png", "226_CoolYellow.png", "297_WarmGold.png", "311_mTransparentBrightGreen.png", "330_OliveGreen.png"};
 
-	// Make all the other materials here following this structure
-	Material pMatRed("MatRed");
-	matNames.push_back("MatRed");
-	pMatRed.LoadDiffuse("21_BrightRed");
-	pMatManager->AddMaterial(pMatRed);
+	for (uint i = 0; i < diffuseNames.size(); i++)
+	{
+		Material newMat(diffuseNames[i]);
+		newMat.LoadDiffuse(diffuseNames[i]);
+		pMatManager->AddMaterial(newMat);
+	}
+
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -50,6 +55,13 @@ void Application::InitVariables(void)
 		//m_pEntityMngr->SetMass(2);
 
 		//m_pEntityMngr->SetMass(i+1);
+
+		// Set the material of the model
+
+		MyEntity* pTempEntity = m_pEntityMngr->GetEntity();
+		Model* pTempModel = pTempEntity->GetModel();
+		int randomMatIndex = rand() % diffuseNames.size();
+		pTempModel->ChangeMaterialOfGroup(diffuseNames[randomMatIndex], "ALL");
 	}
 	m_uOctantLevels = 1;
 	m_pEntityMngr->Update();
