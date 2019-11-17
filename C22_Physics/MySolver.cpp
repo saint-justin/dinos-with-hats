@@ -88,9 +88,13 @@ vector3 RoundSmallVelocity(vector3 a_v3Velocity, float minVelocity = 0.01f)
 	}
 	return a_v3Velocity;
 }
+
 void MySolver::Update(void)
 {
-	ApplyForce(vector3(0.0f, -0.035f, 0.0f));
+	srand((unsigned int)time(NULL));
+	RandomValue = rand();
+
+	ApplyForce(vector3(0.0f, -0.2f, 0.0f));
 
 	m_v3Velocity += m_v3Acceleration;
 	
@@ -104,8 +108,8 @@ void MySolver::Update(void)
 			
 	if (m_v3Position.y <= 0)
 	{
-		m_v3Position.y = 0;
-		m_v3Velocity.y = 0;
+		//m_v3Position.y = 0;
+		m_v3Velocity.y = RandomValue;
 	}
 
 	m_v3Acceleration = ZERO_V3;
@@ -118,8 +122,12 @@ void MySolver::ResolveCollision(MySolver* a_pOther)
 	if (fMagThis > 0.015f || fMagOther > 0.015f)
 	{
 		//a_pOther->ApplyForce(GetVelocity());
-		ApplyForce(-m_v3Velocity);
-		a_pOther->ApplyForce(m_v3Velocity);
+		//ApplyForce(-m_v3Velocity);
+		//a_pOther->ApplyForce(m_v3Velocity);
+
+		m_v3CenterDistance = m_v3Position - a_pOther->m_v3Position;
+		ApplyForce(m_v3CenterDistance);
+		a_pOther->ApplyForce(-m_v3CenterDistance);
 	}
 	else
 	{

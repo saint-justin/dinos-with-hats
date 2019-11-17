@@ -16,7 +16,9 @@ class MySolver
 	vector3 m_v3Position = ZERO_V3; //Position of the MySolver
 	vector3 m_v3Size = vector3(1.0f); //Size of the MySolver
 	vector3 m_v3Velocity = ZERO_V3; //Velocity of the MySolver
+	vector3 m_v3CenterDistance = ZERO_V3;
 	float m_fMass = 1.0f; //Mass of the solver
+	int RandomValue = 0; //value for force of gravity
 public:
 	/*
 	USAGE: Constructor
