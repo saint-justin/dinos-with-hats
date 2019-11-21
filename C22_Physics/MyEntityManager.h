@@ -10,6 +10,7 @@ Date: 2017/07
 namespace Simplex
 {
 
+
 //System Class
 class MyEntityManager
 {
@@ -18,6 +19,8 @@ class MyEntityManager
 	PEntity* m_mEntityArray = nullptr; //array of MyEntity pointers
 	static MyEntityManager* m_pInstance; // Singleton pointer
 public:
+	std::vector<String> diffuseNames;
+
 	/*
 	Usage: Gets the singleton pointer
 	Arguments: ---

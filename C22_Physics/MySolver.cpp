@@ -1,4 +1,6 @@
 #include "MySolver.h"
+#include "MyEntity.h"
+#include "MyEntityManager.h"
 using namespace Simplex;
 //  MySolver
 void MySolver::Init(void)
@@ -162,9 +164,19 @@ void MySolver::ResolveCollision(MySolver* a_pOther)
 		m_v3CenterDistance = m_v3Position - a_pOther->m_v3Position;
 		ApplyForce(m_v3CenterDistance);
 		a_pOther->ApplyForce(-m_v3CenterDistance);
+
+		/*
+		MyEntityManager* m_pEntityMngr = new MyEntityManager();
+		m_pEntityMngr = m_pEntityMngr->GetInstance();
+		MyEntity* pTempEntity = m_pEntityMngr->GetEntity();
+		Model* pTempModel = pTempEntity->GetModel();
+		int randomMatIndex = rand() % diffuseNames.size();
+		pTempModel->ChangeMaterialOfGroup(diffuseNames[randomMatIndex], "ALL");
+		*/
 	}
 	else
 	{
+
 		vector3 v3Direction = m_v3Position - a_pOther->m_v3Position;
 		if(glm::length(v3Direction) != 0)
 			v3Direction = glm::normalize(v3Direction);
