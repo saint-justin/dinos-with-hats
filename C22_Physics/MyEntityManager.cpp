@@ -9,6 +9,7 @@ void Simplex::MyEntityManager::Init(void)
 	diffuseNames = { "21_BrightRed.png", "23_BrightBlue.png", "24_BrightYellow.png", "37_BrightGreen.png",
 	"42_TransparentLightBlue.png", "151_SandGreen.png", "154_DarkRed.png", "212_LightRoyalBlue.png", "221_BrightPurple.png",
 	"222_mLightPurple.png", "226_CoolYellow.png", "297_WarmGold.png", "311_mTransparentBrightGreen.png", "330_OliveGreen.png" };
+	randomMatIndex = 0;
 }
 void Simplex::MyEntityManager::Release(void)
 {
@@ -190,8 +191,9 @@ void Simplex::MyEntityManager::Update(void)
 				//MyEntity* pTempEntity = m_pEntityMngr->GetEntity();
 				MyEntity* pTempEntity = m_mEntityArray[j];
 				Model* pTempModel = pTempEntity->GetModel();
-				int randomMatIndex = rand() % diffuseNames.size();
+				randomMatIndex = rand() % diffuseNames.size();
 				pTempModel->ChangeMaterialOfGroup(diffuseNames[randomMatIndex], "ALL");
+				
 			}
 		}
 		//Update each entity
