@@ -7,6 +7,9 @@ void MySolver::Init(void)
 	m_v3Position = ZERO_V3;
 	m_v3Velocity = ZERO_V3;
 	m_fMass = 1.0f;
+
+	lowerBound = -5;
+	upperBound = 5;
 }
 void MySolver::Swap(MySolver& other)
 {
@@ -92,7 +95,17 @@ vector3 RoundSmallVelocity(vector3 a_v3Velocity, float minVelocity = 0.01f)
 void MySolver::Update(void)
 {
 	srand((unsigned int)time(NULL));
-	RandomValue = rand();
+	RandomValue = rand() % (upperBound - lowerBound + 1) + lowerBound;
+	RandomYValue = rand();
+	/*RandomPosNeg = rand() % 2;
+	if (RandomPosNeg == 1)
+	{
+		RandomValue = rand() * -1;
+	}
+	else
+	{
+		RandomValue = rand();
+	}*/
 
 	ApplyForce(vector3(0.0f, -0.2f, 0.0f));
 
@@ -101,7 +114,7 @@ void MySolver::Update(void)
 	float fMaxVelocity = 5.0f;
 	m_v3Velocity = CalculateMaxVelocity(m_v3Velocity, fMaxVelocity);
 
-	ApplyFriction(0.1f);
+	ApplyFriction(0.01f);
 	m_v3Velocity = RoundSmallVelocity(m_v3Velocity, 0.028f);
 
 	m_v3Position += m_v3Velocity;
@@ -109,7 +122,28 @@ void MySolver::Update(void)
 	if (m_v3Position.y <= 0)
 	{
 		//m_v3Position.y = 0;
-		m_v3Velocity.y = RandomValue;
+		m_v3Velocity.y = RandomYValue;
+		//m_v3Velocity = vector3(RandomValue, RandomValue, RandomValue);
+	}
+
+	if (m_v3Position.x <= -150 || m_v3Position.x >= 150)
+	{
+		m_v3Velocity.x = -m_v3Velocity.x * 0.5;
+	}
+
+	if (m_v3Position.z <= -150 || m_v3Position.z >= 150)
+	{
+		m_v3Velocity.z = -m_v3Velocity.z * 0.5;
+	}
+
+	if (m_v3Velocity.x == 0)
+	{
+		m_v3Velocity.x = RandomValue;
+	}
+
+	if (m_v3Velocity.z == 0)
+	{
+		m_v3Velocity.z = RandomValue;
 	}
 
 	m_v3Acceleration = ZERO_V3;

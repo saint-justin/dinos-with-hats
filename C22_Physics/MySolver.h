@@ -19,6 +19,9 @@ class MySolver
 	vector3 m_v3CenterDistance = ZERO_V3;
 	float m_fMass = 1.0f; //Mass of the solver
 	int RandomValue = 0; //value for force of gravity
+	int RandomYValue = 0;
+	int lowerBound = 0;
+	int upperBound = 0;
 public:
 	/*
 	USAGE: Constructor
