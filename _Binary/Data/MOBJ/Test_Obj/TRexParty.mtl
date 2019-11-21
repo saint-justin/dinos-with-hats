@@ -1,0 +1,26 @@
+newmtl _Hat1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 12179_Hat_diffuse.jpg
+map_Ka 12179_Hat_diffuse.jpg
+Ni 1.50
+Ks 0.54 0.54 0.54
+Ns 50.00
+newmtl _Hat_decoration3
+illum 4
+Kd 0.75 0.00 0.00
+Ka 0.75 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.60 0.60 0.21
+Ns 20.00
+newmtl bodySG
+illum 4
+Kd 0.80 0.80 0.80
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.25 0.25 0.25
+Ns 7.61

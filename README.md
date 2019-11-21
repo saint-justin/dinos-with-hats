@@ -1,2 +1,2 @@
 # DINOS WITH HATS
-A game built in the Alberto-Engine where dinosaurs bounce against the floor and occasionally get hats.
+An interactice experience built in the Alberto-Engine where dinosaurs bounce against the floor and rapidly change colors.
