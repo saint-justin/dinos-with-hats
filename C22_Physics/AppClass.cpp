@@ -12,10 +12,11 @@ void Application::InitVariables(void)
 
 	m_pEntityMngr->AddEntity("Dinos\\RaptorDuck.fbx", "Steve");
 	m_pEntityMngr->UsePhysicsSolver();
+
+	srand((unsigned int)time(NULL));
 	
 	for (int i = 0; i < 100; i++)
 	{
-		srand((unsigned int)time(NULL));
 		int RandomValue = rand() % 4;
 
 		switch (RandomValue)
