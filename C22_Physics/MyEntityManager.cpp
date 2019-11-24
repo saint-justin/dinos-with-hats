@@ -192,8 +192,12 @@ void Simplex::MyEntityManager::Update(void)
 				MyEntity* pTempEntity = m_mEntityArray[j];
 				Model* pTempModel = pTempEntity->GetModel();
 				randomMatIndex = rand() % diffuseNames.size();
+
+				//String groupType("All");
+				//MeshOptions meshOps;
+				//pTempModel->ChangeMeshOptions(meshOps, groupType, j);
+
 				pTempModel->ChangeMaterialOfGroup(diffuseNames[randomMatIndex], "ALL");
-				
 			}
 		}
 		//Update each entity
