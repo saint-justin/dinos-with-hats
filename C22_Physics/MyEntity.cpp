@@ -323,3 +323,7 @@ void Simplex::MyEntity::UsePhysicsSolver(bool a_bUse)
 {
 	m_bUsePhysicsSolver = a_bUse;
 }
+
+void MyEntity::AddRotation() {
+
+}

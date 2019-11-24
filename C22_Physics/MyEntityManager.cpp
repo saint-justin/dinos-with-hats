@@ -175,6 +175,9 @@ void Simplex::MyEntityManager::Update(void)
 	for (uint i = 0; i < m_uEntityCount; i++)
 	{
 		m_mEntityArray[i]->ClearCollisionList();
+
+		// Add rotation to each of 'em
+		m_mEntityArray[i]->AddRotation();
 	}
 	
 	//check collisions

@@ -19,6 +19,7 @@ class MyEntity
 
 	uint m_nDimensionCount = 0; //tells how many dimensions this entity lives in
 	uint* m_DimensionArray = nullptr; //Dimensions on which this entity is located
+	vector3 myRotation;
 
 	Model* m_pModel = nullptr; //Model associated with this MyEntity
 	MyRigidBody* m_pRigidBody = nullptr; //Rigid Body associated with this MyEntity
@@ -267,6 +268,8 @@ public:
 	OUTPUT: ---
 	*/
 	void UsePhysicsSolver(bool a_bUse = true);
+
+	void AddRotation();
 
 private:
 	/*
