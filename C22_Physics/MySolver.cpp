@@ -99,15 +99,6 @@ void MySolver::Update(void)
 	srand((unsigned int)time(NULL));
 	RandomValue = rand() % (upperBound - lowerBound + 1) + lowerBound;
 	RandomYValue = rand();
-	/*RandomPosNeg = rand() % 2;
-	if (RandomPosNeg == 1)
-	{
-		RandomValue = rand() * -1;
-	}
-	else
-	{
-		RandomValue = rand();
-	}*/
 
 	ApplyForce(vector3(0.0f, -0.2f, 0.0f));
 
@@ -124,8 +115,14 @@ void MySolver::Update(void)
 	if (m_v3Position.y <= 0)
 	{
 		//m_v3Position.y = 0;
-		m_v3Velocity.y = RandomYValue;
+		m_v3Velocity.y = jumpHeight;
+		jumpHeight -= 0.5f;
 		//m_v3Velocity = vector3(RandomValue, RandomValue, RandomValue);
+	}
+	
+	if (jumpHeight <= 0)
+	{
+		m_v3Position.y = 0.0f;
 	}
 
 	if (m_v3Position.x <= -150 || m_v3Position.x >= 150)
