@@ -72,8 +72,18 @@ void Application::ProcessKeyPressed(sf::Event a_event)
 	{
 	default: break;
 	case sf::Keyboard::Space:
-		m_sound.play();
-		m_pEntityMngr->ApplyForce(vector3(0.0f, 1.0f, 0.0f), "Steve");
+		//m_sound.play();
+		srand(time(NULL));
+		for (size_t i = 0; i < m_pEntityMngr->GetEntityCount(); i++)
+		{
+			float x = (rand() % 10) - 5.0f;
+			float y = rand() % 40;
+			float z = (rand() % 10) - 5.f;
+
+			MyEntity* ent = m_pEntityMngr->GetEntity(i);
+			//m_pEntityMngr->ApplyForce(vector3(x, y, z), ent->GetUniqueID());
+			ent->GetSolver()->jumpHeight = y;
+		}
 		break;
 
 	case sf::Keyboard::PageUp:

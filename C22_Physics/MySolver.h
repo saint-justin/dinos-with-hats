@@ -22,8 +22,9 @@ class MySolver
 	int RandomYValue = 0;
 	int lowerBound = 0;
 	int upperBound = 0;
-	float jumpHeight = 10.0f;
+	
 public:
+	float jumpHeight = 10.0f;
 	/*
 	USAGE: Constructor
 	ARGUMENTS: ---

@@ -114,13 +114,11 @@ void MySolver::Update(void)
 			
 	if (m_v3Position.y <= 0)
 	{
-		//m_v3Position.y = 0;
 		m_v3Velocity.y = jumpHeight;
 		jumpHeight -= 0.5f;
-		//m_v3Velocity = vector3(RandomValue, RandomValue, RandomValue);
 	}
 	
-	if (jumpHeight <= 0)
+	if (jumpHeight <= 0.0f)
 	{
 		m_v3Position.y = 0.0f;
 	}

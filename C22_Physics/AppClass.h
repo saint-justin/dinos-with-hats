@@ -103,6 +103,8 @@ public:
 	*/
 	~Application(void);
 #pragma endregion
+	
+void PlayBackgroundMusic();
 
 private:
 #pragma region Initialization / Release

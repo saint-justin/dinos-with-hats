@@ -38,6 +38,15 @@ Application::~Application(void)
 	Simplex::ReleaseAllSingletons();
 	SafeDelete(m_pWindow);
 }
+void Simplex::Application::PlayBackgroundMusic()
+{
+	sf::Music music;
+	if (music.openFromFile("Walk_The_Dinosaur.wav"))
+	{
+		music.play();
+	}
+}
+
 void Application::InitControllers(void)
 {
 	//Make sure this method is only executed once
