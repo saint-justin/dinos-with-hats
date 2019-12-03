@@ -72,7 +72,8 @@ void Application::ProcessKeyPressed(sf::Event a_event)
 	{
 	default: break;
 	case sf::Keyboard::Space:
-		//m_sound.play();
+
+		//add a random force
 		srand(time(NULL));
 		for (size_t i = 0; i < m_pEntityMngr->GetEntityCount(); i++)
 		{
