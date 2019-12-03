@@ -96,6 +96,7 @@ vector3 RoundSmallVelocity(vector3 a_v3Velocity, float minVelocity = 0.01f)
 
 void MySolver::Update(void)
 {
+	//generate a random number with bounds for the height of the dinosaur
 	srand((unsigned int)time(NULL));
 	RandomValue = rand() % (upperBound - lowerBound + 1) + lowerBound;
 	RandomYValue = rand();
@@ -112,32 +113,33 @@ void MySolver::Update(void)
 
 	m_v3Position += m_v3Velocity;
 			
+	//reduce bounce over time
 	if (m_v3Position.y <= 0)
 	{
 		m_v3Velocity.y = jumpHeight;
 		jumpHeight -= 0.5f;
 	}
-	
+	//if the dino hit the floor stop bouncing
 	if (jumpHeight <= 0.0f)
 	{
 		m_v3Position.y = 0.0f;
 	}
-
+	//restraints on how far they move in the x axis
 	if (m_v3Position.x <= -150 || m_v3Position.x >= 150)
 	{
 		m_v3Velocity.x = -m_v3Velocity.x * 0.5;
 	}
-
+	//restraints on how far they move in the z axis
 	if (m_v3Position.z <= -150 || m_v3Position.z >= 150)
 	{
 		m_v3Velocity.z = -m_v3Velocity.z * 0.5;
 	}
-
+	//get them moving in a x direction
 	if (m_v3Velocity.x == 0)
 	{
 		m_v3Velocity.x = RandomValue;
 	}
-
+	//get them moving in a z direction
 	if (m_v3Velocity.z == 0)
 	{
 		m_v3Velocity.z = RandomValue;
@@ -152,26 +154,12 @@ void MySolver::ResolveCollision(MySolver* a_pOther)
 
 	if (fMagThis > 0.015f || fMagOther > 0.015f)
 	{
-		//a_pOther->ApplyForce(GetVelocity());
-		//ApplyForce(-m_v3Velocity);
-		//a_pOther->ApplyForce(m_v3Velocity);
-
 		m_v3CenterDistance = m_v3Position - a_pOther->m_v3Position;
 		ApplyForce(m_v3CenterDistance);
 		a_pOther->ApplyForce(-m_v3CenterDistance);
-
-		/*
-		MyEntityManager* m_pEntityMngr = new MyEntityManager();
-		m_pEntityMngr = m_pEntityMngr->GetInstance();
-		MyEntity* pTempEntity = m_pEntityMngr->GetEntity();
-		Model* pTempModel = pTempEntity->GetModel();
-		int randomMatIndex = rand() % diffuseNames.size();
-		pTempModel->ChangeMaterialOfGroup(diffuseNames[randomMatIndex], "ALL");
-		*/
 	}
 	else
 	{
-
 		vector3 v3Direction = m_v3Position - a_pOther->m_v3Position;
 		if(glm::length(v3Direction) != 0)
 			v3Direction = glm::normalize(v3Direction);
