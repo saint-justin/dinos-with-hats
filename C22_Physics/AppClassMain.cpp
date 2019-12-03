@@ -211,6 +211,7 @@ void Application::Init(String a_sApplicationName, int a_uSize, bool a_bFullscree
 }
 void Application::Init(String a_sApplicationName, uint a_uWidth, uint a_uHeight, bool a_bFullscreen, bool a_bBorderless)
 {
+	
 	static bool bInitializated = false;
 	if (bInitializated)
 		return;
@@ -271,7 +272,18 @@ void Application::Init(String a_sApplicationName, uint a_uWidth, uint a_uHeight,
 
 	//Initializated flag
 	bInitializated = true;
+
+
+	String sRoute = m_pSystem->m_pFolder->GetFolderData();
+	sRoute += m_pSystem->m_pFolder->GetFolderAudio();
+	m_soundBGM.openFromFile(sRoute + "Walk_The_Dinosaur.wav");
+	m_soundBGM.play();
+	m_soundBGM.setLoop(true);
 }
+//String sRoute = m_pSystem->m_pFolder->GetFolderData();
+//sRoute+=system->folder->GGetFolderAudio
+//loading=OpenFfromFile(sRoute+"name")
+//play, set loop = true
 void Application::InitWindow(String a_sWindowName)
 {
 	uint uStyle = sf::Style::Default;
