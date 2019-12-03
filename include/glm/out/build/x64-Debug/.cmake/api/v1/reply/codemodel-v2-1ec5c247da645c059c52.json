@@ -34,7 +34,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "glm_dummy::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-glm_dummy-Debug-50bc832fbc9ea7823853.json",
+					"jsonFile" : "target-glm_dummy-Debug-f9b902220380cdd7ccd5.json",
 					"name" : "glm_dummy",
 					"projectIndex" : 0
 				}
@@ -44,8 +44,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Profiles/wxw7238/source/repos/dinos-with-hats/include/glm/out/build/x64-Debug",
-		"source" : "D:/Profiles/wxw7238/source/repos/dinos-with-hats/include/glm"
+		"build" : "C:/Users/leahb/source/repos/dinos-with-hats/include/glm/out/build/x64-Debug",
+		"source" : "C:/Users/leahb/source/repos/dinos-with-hats/include/glm"
 	},
 	"version" : 
 	{
